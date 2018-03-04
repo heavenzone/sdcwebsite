@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+  {{ partial "head.html" . }}
+  <body>
+    <div id="all">
+        <header>
+         {{ partial "nav.html" . }}
+        </header>
+        {{ partial "breadcrumbs.html" . }}
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <!-- *** LEFT COLUMN *** -->
+                    <div class="col-md-9 col-sm-12">
+{{- range $i, $element := .Data.Pages -}}
+<div class="col-md-4 col-sm-6 term-label">
+	<div class="box-image-text">
+		<div class="top">
+			<div class="image term-image" style="overflow:hidden">
+			<a href="{{ .Permalink }}">
+				{{- if ne .Params.logo nil -}}
+				<img src="{{ .Site.BaseURL}}{{ .Params.logo }}" class="img-responsive" />
+				{{- else -}}
+				<img src="{{ .Site.BaseURL}}img/placeholder.png" class="img-responsive" />
+				{{- end -}}
+			</a>
+			</div>
+		</div>
+		<div class="content">
+			<h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+			<div class="term-description">
+			{{- with .Params.description }}{{ .  | safeHTML  }}{{ end -}}
+			</div>
+		</div>
+	</div>
+</div>
+{{- end -}}
+                    </div>
+                    <!-- /.col-md-9 -->
+
+                    <!-- *** LEFT COLUMN END *** -->
+
+                    <!-- *** RIGHT COLUMN ***
+       _________________________________________________________ -->
+
+
+                    <div class="col-md-3 col-sm-12">
+                        <!-- *** MENUS AND WIDGETS *** -->
+
+                        {{ partial "sidebar.html" . }}
+
+                        <!-- *** MENUS AND FILTERS END *** -->
+                    </div>
+                    <!-- /.col-md-3 -->
+
+                    <!-- *** RIGHT COLUMN END *** -->
+
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /#content -->
+
+        {{ partial "footer.html" . }}
+
+    </div>
+    <!-- /#all -->
+
+    {{ partial "scripts.html" . }}
+
+  </body>
+</html>
+

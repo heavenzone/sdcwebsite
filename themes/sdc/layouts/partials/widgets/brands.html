@@ -1,0 +1,23 @@
+{{ if .Site.Params.widgets.brands }}
+{{ if isset .Site.Taxonomies "brands" }}
+{{ if not (eq (len .Site.Taxonomies.brands) 0) }}
+<div class="panel panel-default sidebar-menu col-md-12 col-sm-3">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">{{ i18n "brandsTitle" }}</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            {{ range $name, $items := .Site.Taxonomies.brands }}
+            <li><a href="{{ $.Site.BaseURL }}brands/{{ $name | urlize | lower }}">{{ $name }} ({{ len $items }})</a>
+            </li>
+            {{ end }}
+        </ul>
+    </div>
+	
+
+</div>
+{{ end }}
+{{ end }}
+{{ end }}

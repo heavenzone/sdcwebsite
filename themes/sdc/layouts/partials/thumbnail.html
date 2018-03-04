@@ -1,0 +1,16 @@
+{{ if .Params.banner }}
+	{{if hasPrefix .Params.banner "http"}}						
+	<img src="{{ .Params.banner }}" class = "img-responsive" alt="{{ .Title }}">
+	{{ else }}
+	<img src="{{ .Site.BaseURL}}{{ .Params.banner }}" class="img-responsive" alt="{{ .Title }}">
+	{{end}}
+{{ else }}
+	{{ $img := findRE "<img src=\"[^\"]+\"" .Content 1 }}
+	{{if $img}}
+		{{ range $img }}
+			{{ (print . "class=\"img-responsive\" alt=\"thumbnail\" />") | safeHTML }}
+		{{ end }}
+	{{else}}
+		<img src="{{ .Site.BaseURL}}img/placeholder.png" class="img-responsive" alt="{{ .Title }}">
+	{{end}}
+{{ end }}
