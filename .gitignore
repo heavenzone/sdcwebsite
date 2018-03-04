@@ -31,3 +31,40 @@ vignettes/*.pdf
 # Temporary files created by R markdown
 *.utf8.md
 *.knit.md
+
+# Windows:
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+blogdown
+.DS_Store # if a windows user, Thumbs.db instead
+public/
+test/
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+# Logs and databases #
+######################
+*.log
+
