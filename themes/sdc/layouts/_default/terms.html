@@ -1,18 +1,11 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
-
   {{ partial "head.html" . }}
-
   <body>
-
     <div id="all">
-
         <header>
-
           {{ partial "nav.html" . }}
-
         </header>
-
         {{ partial "breadcrumbs.html" . }}
         <div id="content">
             <div class="container">
@@ -23,17 +16,43 @@
 
                         <!-- $paginator := .Paginate (where .Data.Pages "Type" "blog") -->
                         <!-- range $paginator.Pages -->
-<div class="term">
-  <ul>
-  {{ $data := .Data }}
-  {{ range $key, $value := .Data.Terms.ByCount }}
-    <li>
-      <a href="{{ $value.Name | urlize }}">{{ $value.Name }}</a>
-      <span>&#40;{{ $value.Count }}&#41;</span>
-    </li>
-  {{ end }}
-  </ul>
-</div>
+{{ if eq (lower .Title) "brands" }}
+	{{- range $i, $element := .Data.Pages -}}
+	<div class="col-md-4 col-sm-6 term-label">
+		<div class="box-image-text">
+			<div class="top">
+				<div class="image term-image" style="overflow:hidden">
+				<a href="{{ .Permalink }}">
+					{{- if ne .Params.logo nil -}}
+					<img src="{{ .Site.BaseURL}}{{ .Params.logo }}" class="img-responsive" />
+					{{- else -}}
+					<img src="{{ .Site.BaseURL}}img/placeholder.png" class="img-responsive" />
+					{{- end -}}
+				</a>
+				</div>
+			</div>
+			<div class="content">
+				<h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+				<div class="term-description">
+				{{- with .Params.description }}{{ .  | safeHTML  }}{{ end -}}
+				</div>
+			</div>
+		</div>
+	</div>
+	{{- end -}}
+{{ else }}
+	<div class="term">
+	  <ul>
+	  {{ $data := .Data }}
+	  {{ range $key, $value := .Data.Terms.ByCount }}
+		<li>
+		  <a href="{{ $value.Name | urlize }}">{{ $value.Name }}</a>
+		  <span>&#40;{{ $value.Count }}&#41;</span>
+		</li>
+	  {{ end }}
+	  </ul>
+	</div>
+{{ end }}						
                     </div>
                     <!-- /.col-md-9 -->
 
