@@ -4,7 +4,7 @@
   <body>
     <div id="all">
         <header>
-          {{ partial "nav.html" . }}
+         {{ partial "nav.html" . }}
         </header>
         {{ partial "breadcrumbs.html" . }}
         <div id="content">
@@ -12,19 +12,14 @@
                 <div class="row">
                     <!-- *** LEFT COLUMN *** -->
                     <div class="col-md-9" id="blog-listing-medium">
-						<!-- $paginator := .Paginate (where .Data.Pages "Type" "product") }} -->
-                        <!-- range $paginator.Pages }} -->
-{{ range .Paginator.Pages }}
+                        {{ $paginator := .Paginate (where .Data.Pages "Type" "blog") }}
+                        {{ range $paginator.Pages }}
                         <section class="post">
                             <div class="row">
                                 <div class="col-md-4">
                                   <div class="image">
                                       <a href="{{ .Permalink }}">
-                                          {{ if .Params.banner }}
-                                          <img src="{{ .Site.BaseURL}}{{ .Params.banner }}" class="img-responsive" alt="">
-                                          {{ else }}
-                                          <img src="{{ .Site.BaseURL}}img/placeholder.png" class="img-responsive" alt="">
-                                          {{ end }}
+{{ partial "thumbnail.html" . }}
                                       </a>
                                   </div>
                                 </div>
@@ -35,9 +30,9 @@
                                           {{ if isset .Params "author" }}
                                           {{ i18n "authorBy" }} <a href="#">{{ .Params.author }}</a>
                                           {{ end }}
-                                          {{ if isset .Params "categories" }}
-                                          {{ if gt (len .Params.categories) 0 }}
-                                          in <a href="{{ $.Site.BaseURL }}categories/{{ index .Params.categories 0 | urlize | lower }}">{{ index .Params.categories 0 }}</a>
+                                          {{ if isset .Params "products" }}
+                                          {{ if gt (len .Params.products) 0 }}
+                                          in <a href="{{ $.Site.BaseURL }}products/{{ index .Params.products 0 | urlize | lower }}">{{ index .Params.products 0 }}</a>
                                           {{ end }}
                                           {{ end }}
 
@@ -67,6 +62,9 @@
                             <li class="next disabled"><a href="#">{{ i18n "older" }} &rarr;</a></li>
                             {{ end }}
                         </ul>
+				
+					
+					
                     </div>
                     <!-- /.col-md-9 -->
 
@@ -79,9 +77,10 @@
 
                         <!-- *** MENUS AND WIDGETS *** -->
 
-                        {{ partial "sidebar.html" . }}
-
-                        <!-- *** MENUS AND FILTERS END *** -->
+						{{ partial "widgets/search.html" . }}
+                        {{ partial "widgets/brands.html" . }}     
+						{{ partial "widgets/categories.html" . }} 						
+						<!-- *** MENUS AND FILTERS END *** -->
 
                     </div>
                     <!-- /.col-md-3 -->

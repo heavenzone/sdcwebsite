@@ -1,30 +1,73 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
 
-<div>Test1==================</div>
+  {{ partial "head.html" . }}
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          {{ partial "nav.html" . }}
+
+        </header>
+
+        {{ partial "breadcrumbs.html" . }}
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <!-- *** LEFT COLUMN *** -->
+
+                    <div class="col-md-9" id="blog-listing-medium">
+
+                        <!-- $paginator := .Paginate (where .Data.Pages "Type" "blog") -->
+                        <!-- range $paginator.Pages -->
+<div class="term">
   <ul>
-    {{ range .Data.Pages }}
-      <li>
-        <a href="{{ .Permalink }}">{{ .Title }}</a>
-        <dl>
-          <dt>Link to the brand page</dt><dd><a href="{{ .Permalink }}">{{ .Permalink }}</a></dd>
-          <!-- Handling brands that don't have a corresponding page by using .With -->
-          {{ with .Params.website }}
-            <dt>Website</dt><dd>{{ . }}</dd>
-          {{ end }}
-          {{ with .Params.description }}
-            <dt>Description</dt><dd>{{ . }}</dd>
-          {{ end }}
-          <!-- Handling brands that don't have a corresponding page by usinf an if statement -->
-          <dt>Logo</dt>
-          <dd>
-          {{ if ne .Params.logo nil }}
-            <img src="{{ .Params.logo }}" height="90" />
-          {{ else }}
-            <img src="http://via.placeholder.com/90x90?text=No+logo" height="90" />
-          {{ end }}
-          </dd>
-        </dl>
-      </li>
-    {{ end }}
+  {{ $data := .Data }}
+  {{ range $key, $value := .Data.Terms.ByCount }}
+    <li>
+      <a href="{{ $value.Name | urlize }}">{{ $value.Name }}</a>
+      <span>&#40;{{ $value.Count }}&#41;</span>
+    </li>
+  {{ end }}
   </ul>
+</div>
+                    </div>
+                    <!-- /.col-md-9 -->
 
+                    <!-- *** LEFT COLUMN END *** -->
 
+                    <!-- *** RIGHT COLUMN ***
+       _________________________________________________________ -->
+
+                    <div class="col-md-3">
+
+                        <!-- *** MENUS AND WIDGETS *** -->
+
+                        {{ partial "sidebar.html" . }}
+
+                        <!-- *** MENUS AND FILTERS END *** -->
+
+                    </div>
+                    <!-- /.col-md-3 -->
+
+                    <!-- *** RIGHT COLUMN END *** -->
+
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /#content -->
+
+        {{ partial "footer.html" . }}
+
+    </div>
+    <!-- /#all -->
+
+    {{ partial "scripts.html" . }}
+
+  </body>
+</html>
