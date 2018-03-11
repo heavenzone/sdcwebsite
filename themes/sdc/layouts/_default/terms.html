@@ -13,15 +13,14 @@
                     <!-- *** LEFT COLUMN *** -->
 
                     <div class="col-md-9" id="blog-listing-medium">
-
+<div class="image brands-img">
                         <!-- $paginator := .Paginate (where .Data.Pages "Type" "blog") -->
                         <!-- range $paginator.Pages -->
 {{ if eq (lower .Title) "brands" }}
 	{{- range $i, $element := .Data.Pages -}}
-	<div class="col-md-4 col-sm-6 term-label">
 		<div class="box-image-text">
-			<div class="top">
-				<div class="image term-image" style="overflow:hidden">
+			<div class="brands-top">
+				<div class="term-image" style="overflow:hidden">
 				<a href="{{ .Permalink }}">
 					{{- if ne .Params.logo nil -}}
 					<img src="{{ .Site.BaseURL}}{{ .Params.logo }}" class="img-responsive" />
@@ -38,7 +37,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 	{{- end -}}
 {{ else }}
 	<div class="term">
@@ -53,6 +51,7 @@
 	  </ul>
 	</div>
 {{ end }}						
+</div>                   
                     </div>
                     <!-- /.col-md-9 -->
 

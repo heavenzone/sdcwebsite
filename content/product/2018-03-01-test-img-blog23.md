@@ -1,13 +1,20 @@
 ---
-title: 测试图片blog
+title: 测试feature
 author: Heaven Zone
-date: '2018-03-01'
+date: '2018-03-08'
 slug: test-img-blog
-categories:
-  - 测试
+brands:
+  - nike
 tags:
   - 测试
 banner: 'img/sdc/2018-01.jpg'
+features: |
+  - feature one
+  - feature two
+  - feature three
+  # 赤峰市标题
+  
+  **好东西**
 ---
 
 <!--more-->
