@@ -15,7 +15,7 @@
 
 
 /* terms */
-.term-image {
+.brands-top {
   display: flex;
 	width: 100%;
 	height: auto;
@@ -23,11 +23,24 @@
   align-items: center;
 }
 
-.term-description {
+.intro {
 	text-align: left;
-		padding: 1em;
+	padding-left: 1em;
+	padding-right: 1em;
+	margin: 0em;
+}
+.intro h5 {
+  margin: 0px;
+  line-height: 1.5em;
+}
+.intro ol, ul {
+padding-left: 1em;
+margin-bottom: 0.3em;
 }
 
+.intro ul {
+  list-style: square;
+}
 
 /* terms 响应分列 */
 .brands-img {
@@ -39,8 +52,8 @@
 .brands-img .box-image-text {
   flex: 1 0 30%;
   box-sizing: border-box;
-  margin: 0 0 0 15px;
-  padding: 0.5em;
+  margin: 0 0 2em 15px;
+  padding: 0em;
   overflow-x: hidden;
 }
 

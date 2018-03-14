@@ -9,13 +9,22 @@ tags:
   - 测试
 banner: 'img/sdc/2018-01.jpg'
 features: |
-  - feature one
-  - feature two
-  - feature three
-  # 赤峰市标题
+  ##### 赤峰市标题
   
-  **好东西**
+  Cat
+  : Fluffy animal everyone likes
+  
+  Internet
+  : Vector of transmission for pictures of cats
 ---
+
+Cat 2
+: Fluffy animal everyone likes
+test2
+  
+Internet 2
+: Vector of transmission 
+:  for pictures of cats
 
 <!--more-->
 

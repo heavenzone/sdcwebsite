@@ -19,8 +19,7 @@
 {{ if eq (lower .Title) "brands" }}
 	{{- range $i, $element := .Data.Pages -}}
 		<div class="box-image-text">
-			<div class="brands-top">
-				<div class="term-image" style="overflow:hidden">
+				<div class="brands-top" style="overflow:hidden">
 				<a href="{{ .Permalink }}">
 					{{- if ne .Params.logo nil -}}
 					<img src="{{ .Site.BaseURL}}{{ .Params.logo }}" class="img-responsive" />
@@ -29,11 +28,11 @@
 					{{- end -}}
 				</a>
 				</div>
-			</div>
 			<div class="content">
 				<h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
-				<div class="term-description">
-				{{- with .Params.description }}{{ .  | safeHTML  }}{{ end -}}
+				<div class="intro">
+				<!-- with .Params.description }} .  | safeHTML  }} end -->
+				{{ with .Params.description }}{{ .  | markdownify  }}{{ end }}
 				</div>
 			</div>
 		</div>

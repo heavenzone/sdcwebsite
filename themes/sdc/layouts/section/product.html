@@ -29,11 +29,11 @@
                                     <div class="clearfix">
                                         <p class="author-category">
                                           {{ if isset .Params "author" }}
-                                          {{ i18n "authorBy" }} <a href="#">{{ .Params.author }}</a>
+                                          {{ i18n "authorBy" }} <strong>{{ .Params.author }}</strong>
                                           {{ end }}
-                                          {{ if isset .Params "products" }}
-                                          {{ if gt (len .Params.products) 0 }}
-                                          in <a href="{{ $.Site.BaseURL }}products/{{ index .Params.products 0 | urlize | lower }}">{{ index .Params.products 0 }}</a>
+                                          {{ if isset .Params "brands" }}
+                                          {{ if gt (len .Params.brands) 0 }}
+                                          in <a href="{{ $.Site.BaseURL }}brands/{{ index .Params.brands 0 | urlize | lower }}">{{ index .Params.brands 0 }}</a>
                                           {{ end }}
                                           {{ end }}
 
@@ -42,13 +42,11 @@
                                             <a href="{{ .Permalink }}"><i class="fa fa-calendar-o"></i> {{ .Date.Format .Site.Params.date_format }}</a>
                                         </p>
                                     </div>
-                                    <p class="intro">
+                                    <div class="intro">
                                     <!-- 测试 START {{ .Summary | plainify }} -->
-                                    {{ if (isset .Params "features") }}
-                                      {{ .Params.features | markdownify}}
-                                    {{ end }}
+{{ partial "widgets/summaryfeatures.html" .}}
                                     <!-- 测试 END  -->
-                                    </p>
+                                    </div>
                                     <p class="read-more"><a href="{{ .Permalink }}" class="btn btn-template-main">{{ i18n "continueReading" }}</a>
                                     </p>
                                 </div>
